@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "jsxl": "^0.2.15"
+  }
+}
