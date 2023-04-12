@@ -1,20 +1,12 @@
 const jsxl = require('jsxl');
-
-
-jsxl(
-    [
-        'user@example.com',
-        'anotheruser@domain.com',
-        'lastuser@domain.com'
-      ] ,
+jsxl({
+  input: ['user@example.com', 'anotheruser@domain.com', 'lastuser@domain.com', null]
+},
   [
     {
-      $filter: (email) => {
-        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-          return email;
-        } else {
-          throw new Error(`${email} is not a valid email address`);
-        }
+      $type: String,
+      $transform: (context, email, next) => {
+        next(null, (email && email.constructor === String) ? email.match("/^[^\s@]+@[^\s@]+\.[^\s@]+$/") : next(`invalid ${email}`))
       }
     }
   ],
@@ -27,3 +19,4 @@ jsxl(
     }
   }
 );
+

@@ -6,19 +6,10 @@ jsxl(
     input: ['a', 'skip', 'b', 'skip', 'c']
   },
   [{
-    $type: String,
-    $transform: (context, value, next) => {
-        
-        console.log(context.key);
-      if (value === 'skip') {
-        delete context.source[context.key]
-        // context.$remove = true;
-      } else {
-        context.$insert = value;
-      }
-      next();
-    }
-
+    $filter: (context, value, next) => {
+      next(null, (value !== 'skip'))
+    },
+    $type: String
   }],
   (err, output) => {
     if (err) {
