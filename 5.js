@@ -1,16 +1,16 @@
 const jsxl = require('jsxl');
 
 const input = {
-  delivery: 'priority'
+  delivery: 'express'
 };
 
 jsxl(
   { input },
   {
-    delivery: { 
+    delivery: {
       $type: String,
       $map: { express: 'watsapp', priority: 'text message', batch: 'email' },
-      default:'batch',
+      $default: 'batch',
     }
   },
   (err, output) => {
