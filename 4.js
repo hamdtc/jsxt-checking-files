@@ -10,12 +10,13 @@ jsxl(
   { input },
   [
     {
-      $filter: {
+      $filter:(context,num,next)=> {
         numbers: { 
           $type: Number, 
           $gte: (context, number, next) => next(null, 10), // must be greater than or equal to 10 
           $lt: (context, number, next) => next(null, 20) // must be less than 20 
-        },
+        
+      },
         strings: { 
           $type: String, 
           $ne: (context, str, next) => next(null, 'reserved') // must not be the string 'reserved'
@@ -24,6 +25,7 @@ jsxl(
           $type: Boolean, 
           $eq: (context, bool, next) => next(null, true) // must be the boolean value true
         }
+      }
       }
     }
   ],

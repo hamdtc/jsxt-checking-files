@@ -5,7 +5,7 @@ jsxl.useFilters({
   EvenOdd: [{
     $type: Number,
     $transform: (context, number, next) => {
-      
+      console.log(number);
 
       if (number % 2 === 0) {
         even.push(number);
@@ -13,8 +13,8 @@ jsxl.useFilters({
         odd.push(number);
       }
 
-    console.log(even);
-    console.log(odd);
+    // console.log(even);
+    // console.log(odd);
       next();
     }
   }]
