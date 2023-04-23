@@ -44,3 +44,4 @@ jsxl(input, schema, (err, output) => {
     // output: [{ number: 7}, {number: 9}]
   }
 });
+
