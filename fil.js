@@ -17,3 +17,34 @@ jsxl({
 	}
 );
 
+<<<<<<< HEAD
+=======
+const input = [
+  { number: 7 },
+  { number: 'a' },
+  { number: 9 }
+];
+
+const schema = [
+  {
+    $type: Number,
+    $transform: (context, value, next) => {
+      if (typeof value === 'number') {
+        next(null, value);
+      } else {
+        next(null, undefined);
+      }
+    }
+  }
+];
+
+jsxl(input, schema, (err, output) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log(output);
+    // output: [{ number: 7}, {number: 9}]
+  }
+});
+
+>>>>>>> 36904c175f037bd74781e19ab241239d8ae849f2
